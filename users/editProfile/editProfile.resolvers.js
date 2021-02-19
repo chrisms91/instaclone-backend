@@ -6,17 +6,18 @@ export default {
   Mutation: {
     editProfile: async (
       _,
-      { firstName, lastName, userName, email, password: newPassword }
+      { firstName, lastName, userName, email, password: newPassword },
+      { loggedInUser }
     ) => {
       try {
+        console.log('currently loggedIn user');
+        console.log(loggedInUser);
         let hashedPassword = null;
         if (newPassword) {
           hashedPassword = await bcrypt.hash(newPassword, 10);
         }
         const updatedUser = await client.user.update({
-          // TODO
-          // add authentication part to get the current user's id
-          where: { id: 1 },
+          where: { id: loggedInUser.id },
           data: {
             firstName,
             lastName,
