@@ -5,12 +5,14 @@ import { protectedResolver } from '../users.utils';
 
 const resolverFn = async (
   _,
-  { firstName, lastName, userName, email, password: newPassword },
+  { firstName, lastName, userName, email, password: newPassword, bio, avatar },
   { loggedInUser, protectResolver }
 ) => {
   try {
-    console.log('currently loggedIn user');
-    console.log(loggedInUser);
+    const { filename, createReadStream } = await avatar;
+    const stream = createReadStream();
+    console.log(stream);
+
     let hashedPassword = null;
     if (newPassword) {
       hashedPassword = await bcrypt.hash(newPassword, 10);
@@ -22,6 +24,7 @@ const resolverFn = async (
         lastName,
         userName,
         email,
+        bio,
         ...(hashedPassword && { password: hashedPassword }), // the spread operator unpacks iterable object
       },
     });
