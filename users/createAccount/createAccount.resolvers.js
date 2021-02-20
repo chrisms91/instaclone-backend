@@ -30,9 +30,10 @@ export default {
           },
         });
 
-        return newUser;
+        return { ok: true };
       } catch (error) {
-        return error;
+        console.log(error);
+        return { ok: false, error: "Can't create new account." };
       }
     },
   },
