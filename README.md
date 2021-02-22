@@ -11,9 +11,8 @@ Instaclone Backend with GraphQL and Prisma
 - [x] Change Avatar (Image Upload)
 - [x] Follow User
 - [x] Unfollow User
-- [ ] Search Users
-- [ ] See Followers / Followings with Pagination
-- [ ] Computed Fields
+- [x] See Followers / Followings with Pagination
+- [x] Computed Fields
 - [ ] Search Users
 
 ## Photos:
