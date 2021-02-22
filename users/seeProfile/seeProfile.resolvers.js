@@ -9,6 +9,11 @@ export default {
         where: {
           userName,
         },
+        // // for followers relationship, tell prisma to load it
+        // include: {
+        //   followings: true,
+        //   followers: true,
+        // },
       }),
   },
 };

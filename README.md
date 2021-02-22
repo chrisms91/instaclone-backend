@@ -12,8 +12,9 @@ Instaclone Backend with GraphQL and Prisma
 - [x] Follow User
 - [x] Unfollow User
 - [ ] Search Users
-- [ ] See Followers
-- [ ] See Following
+- [ ] See Followers / Followings with Pagination
+- [ ] Computed Fields
+- [ ] Search Users
 
 ## Photos:
 
