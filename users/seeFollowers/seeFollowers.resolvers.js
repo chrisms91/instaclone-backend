@@ -19,19 +19,10 @@ export default {
           take: PAGE_SIZE,
           skip: (page - 1) * PAGE_SIZE,
         });
-      const totalFollowers = await client.user.count({
-        where: {
-          followings: {
-            some: {
-              userName,
-            },
-          },
-        },
-      });
+
       return {
         ok: true,
         followers,
-        totalPages: Math.ceil(totalFollowers / PAGE_SIZE),
       };
     },
   },
