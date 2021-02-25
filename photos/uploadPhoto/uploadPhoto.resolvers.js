@@ -1,16 +1,13 @@
 import client from '../../client';
 import { protectedResolver } from '../../users/users.utils';
+import { processHashtags } from '../photos.utils';
 
 const resolverFn = async (_, { file, caption }, { loggedInUser }) => {
   try {
-    let hashtagObjs = null;
+    let hashtagObjs = [];
     if (caption) {
       // parse hashtag from caption
-      const hashtags = caption.match(/#[\w]+/g);
-      hashtagObjs = hashtags?.map((hashtag) => ({
-        where: { hashtag },
-        create: { hashtag },
-      }));
+      hashtagObjs = processHashtags(caption);
     }
     // get or create Hashtags
     const newPhoto = await client.photo.create({
@@ -22,7 +19,9 @@ const resolverFn = async (_, { file, caption }, { loggedInUser }) => {
             id: loggedInUser.id,
           },
         },
-        ...(hashtagObjs && { hashtags: { connectOrCreate: hashtagObjs } }),
+        ...(hashtagObjs.length > 0 && {
+          hashtags: { connectOrCreate: hashtagObjs },
+        }),
       },
     });
 

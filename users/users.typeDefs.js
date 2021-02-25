@@ -13,6 +13,7 @@ export default gql`
     updatedAt: String!
     followings: [User]
     followers: [User]
+    photos: [Photo]
     # computed fields
     totalFollowings: Int!
     totalFollowers: Int!

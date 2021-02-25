@@ -13,4 +13,29 @@ export default {
         },
       }),
   },
+
+  Hashtag: {
+    photos: async ({ id }, { page }) => {
+      return await client.hashtag
+        .findUnique({
+          where: {
+            id,
+          },
+        })
+        .photos({
+          take: 5,
+          skip: (page - 1) * 5,
+        });
+    },
+    totalPhotos: async (parent) =>
+      await client.photo.count({
+        where: {
+          hashtags: {
+            some: {
+              id: parent.id,
+            },
+          },
+        },
+      }),
+  },
 };
