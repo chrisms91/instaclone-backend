@@ -12,6 +12,8 @@ export default {
           },
         },
       }),
+    totalLikes: async ({ id }) =>
+      await client.like.count({ where: { photoId: id } }),
   },
 
   Hashtag: {
