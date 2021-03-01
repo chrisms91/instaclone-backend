@@ -13,7 +13,7 @@ Instaclone Backend with GraphQL and Prisma
 - [x] Unfollow User
 - [x] See Followers / Followings with Pagination
 - [x] Computed Fields
-- [ ] Search Users
+- [x] Search Users
 
 ## Photos:
 
@@ -23,5 +23,14 @@ Instaclone Backend with GraphQL and Prisma
 - [x] Search Photos
 - [x] Edit Photo
 - [x] Like / Unlike Photo
-- [ ] See Photo Likes
-- [ ] See Feed
+- [x] See Photo Likes
+- [x] See Feed
+- [x] See Comments
+- [ ] Delete Photo
+- [ ] S3 Image Upload
+
+## Comments
+
+- [x] Comment on Photo
+- [ ] Edit Comment
+- [ ] Delete Comment (Is Mine)
