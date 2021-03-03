@@ -35,7 +35,7 @@ const resolverFn = async (_, { id, caption }, { loggedInUser }) => {
       },
     });
 
-    return { ok: true, photo: updatedPhoto };
+    return { ok: true };
   } catch (error) {
     console.log(error);
     return { ok: false, error };

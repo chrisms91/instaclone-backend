@@ -25,7 +25,7 @@ const resolverFn = async (_, { file, caption }, { loggedInUser }) => {
       },
     });
 
-    return { ok: true, photo: newPhoto };
+    return { ok: true };
   } catch (error) {
     console.log(error);
     return { ok: false, error: 'Could not upload photo' };
