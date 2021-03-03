@@ -19,7 +19,7 @@ export const getUser = async (token) => {
 
 // returning a function that it not called yet which is regular graphql resolver.
 export function protectedResolver(resolver) {
-  return function (root, args, context, info) {
+  return function (parent, args, context, info) {
     if (!context.loggedInUser) {
       return {
         ok: false,
@@ -27,6 +27,6 @@ export function protectedResolver(resolver) {
       };
     }
 
-    return resolver(root, args, context, info);
+    return resolver(parent, args, context, info);
   };
 }
