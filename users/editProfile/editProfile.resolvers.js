@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import client from '../../client';
 import fs from 'fs';
 import { protectedResolver } from '../users.utils';
+import { uploadToS3 } from '../../shared/shared.utils';
 
 const resolverFn = async (
   _,
@@ -12,7 +13,10 @@ const resolverFn = async (
   try {
     let avatarUrl = null;
     if (avatar) {
-      const { filename, mimetype, createReadStream } = await avatar;
+      // upload photo to s3 bucket
+      avatarUrl = await uploadToS3(avatar, loggedInUser.id, 'avatars');
+
+      /* const { filename, mimetype, createReadStream } = await avatar;
       const newFileName = `${loggedInUser.id}-${Date.now()}-${filename}`;
       const readStream = createReadStream();
       const writeStream = fs.createWriteStream(
@@ -20,7 +24,7 @@ const resolverFn = async (
       );
       // it will be stored in the cloud on production.
       await readStream.pipe(writeStream);
-      avatarUrl = `http://localhost:4000/static/${newFileName}`;
+      avatarUrl = `http://localhost:4000/static/${newFileName}`; */
     }
 
     let hashedPassword = null;
