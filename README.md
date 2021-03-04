@@ -38,7 +38,7 @@ Instaclone Backend with GraphQL and Prisma
 
 ## DMs
 
-- [ ] Create Room
-- [ ] Get Room
-- [ ] Send Message
+- [ ] See Room
+- [ ] Send Message (Create Room)
+- [ ] See Rooms
 - [ ] Realtime Messages?
