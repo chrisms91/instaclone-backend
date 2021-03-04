@@ -26,11 +26,19 @@ Instaclone Backend with GraphQL and Prisma
 - [x] See Photo Likes
 - [x] See Feed
 - [x] See Comments
-- [ ] Delete Photo
-- [ ] S3 Image Upload
+- [x] Delete Photo
+- [x] S3 Image Upload
 
 ## Comments
 
 - [x] Comment on Photo
-- [ ] Edit Comment
-- [ ] Delete Comment (Is Mine)
+- [x] Edit Comment
+- [x] Delete Comment (Is Mine)
+
+
+## DMs
+
+- [ ] Create Room
+- [ ] Get Room
+- [ ] Send Message
+- [ ] Realtime Messages?
