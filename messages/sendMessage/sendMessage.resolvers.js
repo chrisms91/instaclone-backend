@@ -1,4 +1,6 @@
 import client from '../../client';
+import { NEW_MESSAGE } from '../../constants';
+import pubsub from '../../pubsub';
 import { protectedResolver } from '../../users/users.utils';
 
 const resolverFn = async (_, { payload, roomId, userId }, { loggedInUser }) => {
@@ -36,6 +38,7 @@ const resolverFn = async (_, { payload, roomId, userId }, { loggedInUser }) => {
     if (!room) return { ok: false, error: 'Room not found' };
   }
 
+  // create message
   const newMessage = await client.message.create({
     data: {
       payload,
@@ -52,6 +55,8 @@ const resolverFn = async (_, { payload, roomId, userId }, { loggedInUser }) => {
     },
   });
 
+  // publish new message
+  pubsub.publish(NEW_MESSAGE, { roomUpdates: { ...newMessage } });
   return { ok: true };
 };
 
