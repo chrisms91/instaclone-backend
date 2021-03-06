@@ -43,4 +43,4 @@ Instaclone Backend with GraphQL and Prisma
 - [x] See Rooms
 - [x] Computed Fields
 - [x] See Message
-- [ ] Realtime Messages?
+- [x] Realtime Messages?
