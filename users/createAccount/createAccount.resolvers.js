@@ -20,6 +20,7 @@ export default {
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
+        const unix = Math.floor(new Date().getTime() / 1000);
         const newUser = await client.user.create({
           data: {
             userName,
@@ -27,6 +28,7 @@ export default {
             firstName,
             lastName,
             password: hashedPassword,
+            avatar: `https://www.gravatar.com/avatar/${unix}?d=identicon`,
           },
         });
 
