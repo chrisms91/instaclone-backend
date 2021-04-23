@@ -1,8 +1,10 @@
 import client from '../../client';
 import { protectedResolver } from '../../users/users.utils';
 
-const resolverFn = async (_, __, { loggedInUser }) =>
+const resolverFn = async (_, { offset }, { loggedInUser }) =>
   await client.photo.findMany({
+    take: 2,
+    skip: offset,
     // find photos where the owners' followers list have my id
     where: {
       OR: [
